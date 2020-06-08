@@ -9,8 +9,7 @@ var app = new Vue({
       image2: "./assets/vmSocks-blue-onWhite.jpg",
       altText: "A pair of socks",
       inStock: true,
-      inventory: 6,
-      onSale: false
+      inventory: 6
     } 
   })
   

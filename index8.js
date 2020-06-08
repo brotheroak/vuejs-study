@@ -27,7 +27,7 @@ Vue.component('product', {
                 <!-- <span v-if="onSale">On Sale!</span> -->
 
                 <!-- <p>{{ sale }}</p> -->
-                <p>Shipping: {{ shipping }}</p>                
+                <p>Shipping: {{ shipping }}</p>
 
                 <ul>
                     <li v-for="detail in details">{{ detail }}</li>
@@ -37,7 +37,7 @@ Vue.component('product', {
                 <div v-for="(variant, index) in variants" 
                     :key="variant.variantId"
                     class="color-box"
-                    :style="{ backgroundColor: variant.variantColor }"                    
+                    :style="{ backgroundColor: variant.variantColor }"
                     @mouseover="updateProduct(index)">
                     <!-- <p> {{ variant.variantColor }}</p> -->
                     <!-- <p @mouseover="updateProduct(variant.variantImage)"> {{ variant.variantColor }}</p> -->
@@ -45,10 +45,10 @@ Vue.component('product', {
 
                 <!-- <button v-on:click="cart += 1">Add to Cart</button> -->
                 <!-- <button v-on:click="addToCart">Add to Cart</button> -->
-                <button v-on:click="addToCart" 
+                <button v-on:click="addToCart"
                         :disabled="!inStock"
                         :class="{ disabledButton: !inStock }">Add to Cart</button>
-                
+
                 <!-- <button v-on:click="removeFromCart">Remove from cart</button> -->
                 <button v-on:click="removeFromCart"
                         :class="{ disabledButton: cart <= 0 }">Remove from cart</button>

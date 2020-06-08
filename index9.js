@@ -45,13 +45,13 @@ Vue.component('product', {
 
                 <!-- <button v-on:click="cart += 1">Add to Cart</button> -->
                 <!-- <button v-on:click="addToCart">Add to Cart</button> -->
-                <button v-on:click="addToCart" 
+                <button v-on:click="addToCart"
                         :disabled="!inStock"
                         :class="{ disabledButton: !inStock }">Add to Cart</button>
-                
+
                 <!-- <button v-on:click="removeFromCart">Remove from cart</button> -->
-                <button v-on:click="removeFromCart"
-                        :class="{ disabledButton: cart <= 0 }">Remove from cart</button>
+                <!-- <button v-on:click="removeFromCart"
+                        :class="{ disabledButton: cart <= 0 }">Remove from cart</button> -->
             </div>
         </div>
   `,
@@ -91,7 +91,8 @@ Vue.component('product', {
     //   this.image = variantImage
     // }
     addToCart() {
-      this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
+      this.$emit('add-to-cart')
+      // this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
     },
     // updateProduct(variantImage) {
     //   this.image = variantImage
@@ -119,7 +120,7 @@ Vue.component('product', {
     sale() {
       if (this.onSale) {
         return this.brand + ' ' + this.product + ' are on sale!'
-      } 
+      }
         return  this.brand + ' ' + this.product + ' are not on sale'
     },
     shipping() {
@@ -139,12 +140,14 @@ var app = new Vue({
     el: '#app',
     data: {
       premium: true,
-      cart: []
+      cart: 0
+      // cart: []
     },
     methods: {
-      updateCart(id) {
-        this.cart.push(id)
+      updateCart() {
+      // updateCart(id) {
+        this.cart += 1
+        // this.cart.push(id)
       }
     }
   })
-  

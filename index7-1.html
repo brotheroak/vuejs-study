@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product App</title>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+</head>
+<body>
+
+    <div class="nav-bar"></div>
+    <div id="app">
+        <div class="product">
+
+            <div class="product-image">
+                <img v-bind:src="image" />
+                <!-- <img :src="image2" :alt="altText"/> -->
+            </div>
+
+            <div class="product-info">
+                <h1>{{ brand }} {{ product }}</h1>
+                <!-- <h1>{{ title }}</h1> -->
+                <p v-if="inStock">In Stock</p>
+                <p v-else
+                    :class="{ outOfStock: !inStock }">Out of Stock</p>
+                <!-- <p v-if="inventory > 10">In Stock</p>
+                <p v-else-if="inventory<=10 && inventory >0">Almost sold out!</p>
+                <p v-else
+                    :class="{ outOfStock: inventory <=0 }">Out of Stock</p> -->
+                <!-- <p v-show="inStock">In Stock</p> -->
+                <!-- <span v-if="onSale">On Sale!</span> -->
+
+                <p>{{ sale }}</p>
+
+                <ul>
+                    <li v-for="detail in details">{{ detail }}</li>
+                </ul>
+
+                <!-- <div v-for="variant in variants"  -->
+                <div v-for="(variant, index) in variants"
+                    :key="variant.variantId"
+                    class="color-box"
+                    :style="{ backgroundColor: variant.variantColor }"
+                    @mouseover="updateProduct(index)">
+                    <!-- <p> {{ variant.variantColor }}</p> -->
+                    <!-- <p @mouseover="updateProduct(variant.variantImage)"> {{ variant.variantColor }}</p> -->
+                </div>
+
+                <!-- <button v-on:click="cart += 1">Add to Cart</button> -->
+                <!-- <button v-on:click="addToCart">Add to Cart</button> -->
+                <button v-on:click="addToCart"
+                        :disabled="!inStock"
+                        :class="{ disabledButton: !inStock }">Add to Cart</button>
+
+                <!-- <button v-on:click="removeFromCart">Remove from cart</button> -->
+                <button v-on:click="removeFromCart"
+                        :class="{ disabledButton: cart <= 0 }">Remove from cart</button>
+
+                <div class="cart">
+                    <p>Cart({{cart}})</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="index7-1.js"></script>
+</body>
+</html>
