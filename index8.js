@@ -7,12 +7,12 @@ Vue.component('product', {
   },
   template: `
   <div class="product">
-    
+
             <div class="product-image">
                 <img v-bind:src="image" />
                 <!-- <img :src="image2" :alt="altText"/> -->
             </div>
-        
+
             <div class="product-info">
                 <!-- <h1>{{ brand }} {{ product }}</h1> -->
                 <h1>{{ title }}</h1>
